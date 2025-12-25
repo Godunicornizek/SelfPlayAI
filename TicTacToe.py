@@ -1,6 +1,14 @@
 #!/usr/bin/env python
 # coding: utf-8
 
+# In[ ]:
+
+
+# Mount GDrive
+from google.colab import drive
+drive.mount('/content/drive')
+
+
 # # Creating a TicTacToe Class
 
 # In[ ]:
@@ -69,60 +77,54 @@ class TicTacToe:
 # In[ ]:
 
 
-# Initializing the board and players
-tictactoe = TicTacToe()
-player = 1
-state = tictactoe.get_init()
-opponent = tictactoe.get_opponent
+if __name__ == "__main__":
+    # Initializing the board and players
+    tictactoe = TicTacToe()
+    player = 1
+    state = tictactoe.get_init()
+    opponent = tictactoe.get_opponent
 
-
-# In[ ]:
-
-
-# Starting for 1 turn
-action = 4
-state = tictactoe.get_next_state(state, action, player)
-print(state)
-value, terminated = tictactoe.get_value_and_terminated(state, action)
-print(f"The game has {'terminated' if bool(terminated) else 'not terminated'}.")
-
-
-# In[ ]:
-
-
-import random
-
-tictactoe2 = TicTacToe()
-player = 1
-state = tictactoe.get_init()
-opponent = tictactoe.get_opponent
-
-while True:
+    # Starting for 1 turn
+    action = 4
+    state = tictactoe.get_next_state(state, action, player)
     print(state)
-    valid_moves = tictactoe2.get_valid_moves(state)
-    print("valid moves", [i for i in range(tictactoe2.action_size) if valid_moves[i] == 1])
-    action = int(input(f"{player}:"))
+    value, terminated = tictactoe.get_value_and_terminated(state, action)
+    print(f"The game has {'terminated' if bool(terminated) else 'not terminated'}.")
 
-    if valid_moves[action] == 0:
-        print("Action not valid")
-        continue
+    import random
 
-    state = tictactoe2.get_next_state(state, action, player)
+    tictactoe2 = TicTacToe()
+    player = 1
+    state = tictactoe.get_init()
+    opponent = tictactoe.get_opponent
 
-    value, is_terminated = tictactoe2.get_value_and_terminated(state, action)
-
-    if is_terminated:
+    while True:
         print(state)
-        if value == 1:
-            print(player, "won")
-        else:
-            print("draw")
-        break
+        valid_moves = tictactoe2.get_valid_moves(state)
+        print("valid moves", [i for i in range(tictactoe2.action_size) if valid_moves[i] == 1])
+        action = int(input(f"{player}:"))
 
-    player = tictactoe2.get_opponent(player)
+        if valid_moves[action] == 0:
+            print("Action not valid")
+            continue
+
+        state = tictactoe2.get_next_state(state, action, player)
+
+        value, is_terminated = tictactoe2.get_value_and_terminated(state, action)
+
+        if is_terminated:
+            print(state)
+            if value == 1:
+                print(player, "won")
+            else:
+                print("draw")
+            break
+
+        player = tictactoe2.get_opponent(player)
 
 
-# # Github Pushing
+
+# # Code for pushing to Github (Not used)
 
 # In[ ]:
 
@@ -177,18 +179,6 @@ import getpass
 token = getpass.getpass("Enter GitHub token: ")
 
 get_ipython().system('git push https://GodUnicornIzek:{token}@github.com/GodUnicornIzek/SelfPlayAI.git main')
-
-
-# In[ ]:
-
-
-get_ipython().system('git status')
-
-
-# In[ ]:
-
-
-get_ipython().system('ls')
 
 
 # In[ ]:
@@ -267,4 +257,161 @@ get_ipython().system('git push https://GodunicornIzek:{token}@github.com/Godunic
 
 # --- 9. Status check ---
 get_ipython().system('git status')
+
+
+# In[ ]:
+
+
+get_ipython().run_line_magic('cd', '/content/SelfPlayAI')
+
+# Copy the uploaded file into the repo folder (overwrite if necessary)
+get_ipython().system('cp /content/TicTacToe.ipynb ./TicTacToe.ipynb')
+
+# Stage the notebook
+get_ipython().system('git add TicTacToe.ipynb')
+
+# Commit
+get_ipython().system('git commit -m "Add/update TicTacToe notebook"')
+
+# Push using getpass token
+import getpass
+token = getpass.getpass("Enter GitHub token: ")
+get_ipython().system('git push https://GodUnicornIzek:{token}@github.com/GodUnicornizek/SelfPlayAI.git main')
+
+
+# In[ ]:
+
+
+get_ipython().run_line_magic('cd', '/content/SelfPlayAI')
+
+# Remove AlphaZeroImplementation.ipynb from Git
+get_ipython().system('git rm --cached AlphaZeroImplementation.ipynb')
+
+# Commit the removal
+get_ipython().system('git commit -m "Remove old AlphaZeroImplementation notebook from repo"')
+
+
+# In[ ]:
+
+
+import getpass
+token = getpass.getpass("Enter GitHub token: ")
+
+get_ipython().system('git push https://GodUnicornIzek:{token}@github.com/GodUnicornizek/SelfPlayAI.git main')
+
+
+# In[ ]:
+
+
+get_ipython().run_line_magic('cd', '/content/SelfPlayAI')
+
+
+# In[ ]:
+
+
+get_ipython().system('cp /content/TicTacToe.ipynb ./TicTacToe.ipynb  # Notebook')
+get_ipython().system('jupyter nbconvert --to python TicTacToe.ipynb   # Optional: update .py module')
+
+
+# In[ ]:
+
+
+get_ipython().system('git add TicTacToe.py TicTacToe.ipynb')
+
+
+# In[ ]:
+
+
+get_ipython().system('git add TicTacToe.ipynb')
+
+
+# In[ ]:
+
+
+get_ipython().system('git commit -m "Update TicTacToe notebook"')
+
+
+# In[ ]:
+
+
+get_ipython().system('git commit -m "Update TicTacToe.py: wrap demo code in __main__"')
+
+
+# In[ ]:
+
+
+import getpass
+token = getpass.getpass("Enter GitHub token: ")
+
+get_ipython().system('git push https://GodUnicornIzek:{token}@github.com/GodUnicornizek/SelfPlayAI.git main')
+
+
+# In[ ]:
+
+
+import getpass
+token = getpass.getpass("Enter GitHub token: ")
+
+get_ipython().system('git pull https://GodUnicornIzek:{token}@github.com/GodUnicornizek/SelfPlayAI.git main --allow-unrelated-histories')
+
+
+# In[ ]:
+
+
+get_ipython().system('git status')
+
+
+# In[ ]:
+
+
+get_ipython().system('git add TicTacToe.ipynb TicTacToe.py')
+get_ipython().system('git commit -m "Update TicTacToe notebook and module"')
+get_ipython().system('git push https://GodUnicornIzek:{token}@github.com/GodUnicornizek/SelfPlayAI.git main')
+
+
+# # New Code for pushing to Github
+
+# The following code does not need to be run again:
+
+# In[ ]:
+
+
+get_ipython().system('git clone https://github.com/Godunicornizek/SelfPlayAI.git')
+
+
+# In[ ]:
+
+
+get_ipython().system('git config --global user.name "GodunicornIzek"')
+get_ipython().system('git config --global user.email "godunicornizek@gmail.com"')
+
+
+# Run the following code after a workflow for pushing to Git
+
+# In[12]:
+
+
+from google.colab import drive
+drive.mount('/content/drive')
+
+
+# In[13]:
+
+
+get_ipython().run_line_magic('cd', '/content/drive/MyDrive')
+get_ipython().system('mkdir -p Projects')
+get_ipython().run_line_magic('cd', '/content/drive/MyDrive/Projects')
+
+
+# In[14]:
+
+
+get_ipython().system('mv /content/drive/MyDrive/SelfPlayAI/TicTacToe.ipynb     /content/drive/MyDrive/Projects/SelfPlayAI/')
+
+
+# In[16]:
+
+
+get_ipython().run_line_magic('cd', '/content/drive/MyDrive/Projects/SelfPlayAI')
+get_ipython().system('jupyter nbconvert --to python TicTacToe.ipynb')
 
