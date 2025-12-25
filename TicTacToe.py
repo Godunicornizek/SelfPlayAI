@@ -388,7 +388,7 @@ get_ipython().system('git config --global user.email "godunicornizek@gmail.com"'
 
 # Run the following code after a workflow for pushing to Git
 
-# In[12]:
+# In[1]:
 
 
 from google.colab import drive
@@ -409,9 +409,36 @@ get_ipython().run_line_magic('cd', '/content/drive/MyDrive/Projects')
 get_ipython().system('mv /content/drive/MyDrive/SelfPlayAI/TicTacToe.ipynb     /content/drive/MyDrive/Projects/SelfPlayAI/')
 
 
-# In[16]:
+# In[20]:
 
 
 get_ipython().run_line_magic('cd', '/content/drive/MyDrive/Projects/SelfPlayAI')
 get_ipython().system('jupyter nbconvert --to python TicTacToe.ipynb')
+
+
+# In[22]:
+
+
+get_ipython().system('git status')
+
+
+# In[23]:
+
+
+get_ipython().system('git add TicTacToe.ipynb TicTacToe.py')
+
+
+# In[25]:
+
+
+get_ipython().system('git commit -m "Update TicTacToe game logic"')
+
+
+# In[28]:
+
+
+import getpass
+token = getpass.getpass("Enter GitHub token: ")
+
+get_ipython().system('git remote set-url origin https://GodUnicornIzek:{token}@github.com/GodUnicornizek/SelfPlayAI.git')
 
