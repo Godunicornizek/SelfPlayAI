@@ -129,244 +129,244 @@ if __name__ == "__main__":
 # In[ ]:
 
 
-get_ipython().system('git clone https://github.com/GodunicornIzek/SelfPlayAI.git')
+# !git clone https://github.com/GodunicornIzek/SelfPlayAI.git
 
 
 # In[ ]:
 
 
-get_ipython().system('git config --global user.email "godunicornizek@gmail.com"')
-get_ipython().system('git config --global user.name "GodUnicornIzek"')
+# !git config --global user.email "godunicornizek@gmail.com"
+# !git config --global user.name "GodUnicornIzek"
 
 
 # In[ ]:
 
 
-# Save the current notebook into /content with a specific name
-from google.colab import drive, files, _import_hooks
-import os
+# # Save the current notebook into /content with a specific name
+# from google.colab import drive, files, _import_hooks
+# import os
 
-# If you want to save the current notebook with a known name:
-get_ipython().system('cp "/content/AlphaZeroImplementation.ipynb" "/content/AlphaZeroImplementation.ipynb"')
-
-
-# In[ ]:
-
-
-from google.colab import files
-
-# This will prompt you to upload a file if you want to bring it from your local machine
-uploaded = files.upload()
+# # If you want to save the current notebook with a known name:
+# !cp "/content/AlphaZeroImplementation.ipynb" "/content/AlphaZeroImplementation.ipynb"
 
 
 # In[ ]:
 
 
-get_ipython().system('ls /content/')
+# from google.colab import files
+
+# # This will prompt you to upload a file if you want to bring it from your local machine
+# uploaded = files.upload()
 
 
 # In[ ]:
 
 
-get_ipython().system('cp /content/AlphaZeroImplementation.ipynb /content/SelfPlayAI/')
+# !ls /content/
+
+
+# In[ ]:
+
+
+# !cp /content/AlphaZeroImplementation.ipynb /content/SelfPlayAI/
 
 
 # In[ ]:
 
 
 # Instead of hardcoding the token:
-import getpass
-token = getpass.getpass("Enter GitHub token: ")
+# import getpass
+# token = getpass.getpass("Enter GitHub token: ")
 
-get_ipython().system('git push https://GodUnicornIzek:{token}@github.com/GodUnicornIzek/SelfPlayAI.git main')
-
-
-# In[ ]:
-
-
-get_ipython().run_line_magic('cd', '/content/SelfPlayAI')
-
-# Rename it to a clean filename
-get_ipython().system('mv "AlphaZeroImplementation (2).ipynb" AlphaZeroImplementation.ipynb')
-get_ipython().system('rm "AlphaZeroImplementation (1).ipynb"')
+# !git push https://GodUnicornIzek:{token}@github.com/GodUnicornIzek/SelfPlayAI.git main
 
 
 # In[ ]:
 
 
-get_ipython().system('git add AlphaZeroImplementation.ipynb')
-get_ipython().system('git commit -m "Add/update notebook"')
+# %cd /content/SelfPlayAI
+
+# # Rename it to a clean filename
+# !mv "AlphaZeroImplementation (2).ipynb" AlphaZeroImplementation.ipynb
+# !rm "AlphaZeroImplementation (1).ipynb"
 
 
 # In[ ]:
 
 
-get_ipython().system('git remote set-url origin https://github.com/Godunicornizek/SelfPlayAI.git')
+# !git add AlphaZeroImplementation.ipynb
+# !git commit -m "Add/update notebook"
 
 
 # In[ ]:
 
 
-import getpass
-token = getpass.getpass("Enter GitHub token: ")
-
-get_ipython().system('git push https://GodUnicornIzek:{token}@github.com/GodUnicornizek/SelfPlayAI.git main')
+# !git remote set-url origin https://github.com/Godunicornizek/SelfPlayAI.git
 
 
 # In[ ]:
 
 
-# -------------------------------
-# Colab GitHub Push Workflow
-# -------------------------------
+# import getpass
+# token = getpass.getpass("Enter GitHub token: ")
 
-from google.colab import files, drive
-import os, getpass
-
-# --- 1. Configure Git ---
-get_ipython().system('git config --global user.email "godunicornizek@gmail.com"')
-get_ipython().system('git config --global user.name "GodunicornIzek"')
-
-# --- 2. Clone repo (if not already present) ---
-repo_dir = "/content/SelfPlayAI"
-if not os.path.exists(repo_dir):
-    get_ipython().system('git clone https://github.com/Godunicornizek/SelfPlayAI.git {repo_dir}')
-
-# --- 3. Move into repo directory ---
-get_ipython().run_line_magic('cd', '{repo_dir}')
-
-# --- 4. Upload the notebook if not already in Colab ---
-uploaded = files.upload()  # Choose your tictactoe.ipynb
-# This will place the file in /content/, copy it into the repo
-for fname in uploaded.keys():
-    get_ipython().system('cp "/content/{fname}" "{repo_dir}/{fname}"')
-
-# --- 5. Optional: rename notebook to clean name ---
-get_ipython().system('mv "{repo_dir}/tictactoe.ipynb" "tictactoe.ipynb"')
-
-# --- 6. Stage and commit changes ---
-get_ipython().system('git add tictactoe.ipynb')
-get_ipython().system('git commit -m "Add/update TicTacToe notebook"')
-
-# --- 7. Set remote URL just in case ---
-get_ipython().system('git remote set-url origin https://github.com/Godunicornizek/SelfPlayAI.git')
-
-# --- 8. Push safely using getpass ---
-token = getpass.getpass("Enter GitHub token: ")
-get_ipython().system('git push https://GodunicornIzek:{token}@github.com/Godunicornizek/SelfPlayAI.git main')
-
-# --- 9. Status check ---
-get_ipython().system('git status')
+# !git push https://GodUnicornIzek:{token}@github.com/GodUnicornizek/SelfPlayAI.git main
 
 
 # In[ ]:
 
 
-get_ipython().run_line_magic('cd', '/content/SelfPlayAI')
+# # -------------------------------
+# # Colab GitHub Push Workflow
+# # -------------------------------
 
-# Copy the uploaded file into the repo folder (overwrite if necessary)
-get_ipython().system('cp /content/TicTacToe.ipynb ./TicTacToe.ipynb')
+# from google.colab import files, drive
+# import os, getpass
 
-# Stage the notebook
-get_ipython().system('git add TicTacToe.ipynb')
+# # --- 1. Configure Git ---
+# !git config --global user.email "godunicornizek@gmail.com"
+# !git config --global user.name "GodunicornIzek"
 
-# Commit
-get_ipython().system('git commit -m "Add/update TicTacToe notebook"')
+# # --- 2. Clone repo (if not already present) ---
+# repo_dir = "/content/SelfPlayAI"
+# if not os.path.exists(repo_dir):
+#     !git clone https://github.com/Godunicornizek/SelfPlayAI.git {repo_dir}
 
-# Push using getpass token
-import getpass
-token = getpass.getpass("Enter GitHub token: ")
-get_ipython().system('git push https://GodUnicornIzek:{token}@github.com/GodUnicornizek/SelfPlayAI.git main')
+# # --- 3. Move into repo directory ---
+# %cd {repo_dir}
 
+# # --- 4. Upload the notebook if not already in Colab ---
+# uploaded = files.upload()  # Choose your tictactoe.ipynb
+# # This will place the file in /content/, copy it into the repo
+# for fname in uploaded.keys():
+#     !cp "/content/{fname}" "{repo_dir}/{fname}"
 
-# In[ ]:
+# # --- 5. Optional: rename notebook to clean name ---
+# !mv "{repo_dir}/tictactoe.ipynb" "tictactoe.ipynb"
 
+# # --- 6. Stage and commit changes ---
+# !git add tictactoe.ipynb
+# !git commit -m "Add/update TicTacToe notebook"
 
-get_ipython().run_line_magic('cd', '/content/SelfPlayAI')
+# # --- 7. Set remote URL just in case ---
+# !git remote set-url origin https://github.com/Godunicornizek/SelfPlayAI.git
 
-# Remove AlphaZeroImplementation.ipynb from Git
-get_ipython().system('git rm --cached AlphaZeroImplementation.ipynb')
+# # --- 8. Push safely using getpass ---
+# token = getpass.getpass("Enter GitHub token: ")
+# !git push https://GodunicornIzek:{token}@github.com/Godunicornizek/SelfPlayAI.git main
 
-# Commit the removal
-get_ipython().system('git commit -m "Remove old AlphaZeroImplementation notebook from repo"')
-
-
-# In[ ]:
-
-
-import getpass
-token = getpass.getpass("Enter GitHub token: ")
-
-get_ipython().system('git push https://GodUnicornIzek:{token}@github.com/GodUnicornizek/SelfPlayAI.git main')
-
-
-# In[ ]:
-
-
-get_ipython().run_line_magic('cd', '/content/SelfPlayAI')
-
-
-# In[ ]:
-
-
-get_ipython().system('cp /content/TicTacToe.ipynb ./TicTacToe.ipynb  # Notebook')
-get_ipython().system('jupyter nbconvert --to python TicTacToe.ipynb   # Optional: update .py module')
+# # --- 9. Status check ---
+# !git status
 
 
 # In[ ]:
 
 
-get_ipython().system('git add TicTacToe.py TicTacToe.ipynb')
+# %cd /content/SelfPlayAI
+
+# # Copy the uploaded file into the repo folder (overwrite if necessary)
+# !cp /content/TicTacToe.ipynb ./TicTacToe.ipynb
+
+# # Stage the notebook
+# !git add TicTacToe.ipynb
+
+# # Commit
+# !git commit -m "Add/update TicTacToe notebook"
+
+# # Push using getpass token
+# import getpass
+# token = getpass.getpass("Enter GitHub token: ")
+# !git push https://GodUnicornIzek:{token}@github.com/GodUnicornizek/SelfPlayAI.git main
 
 
 # In[ ]:
 
 
-get_ipython().system('git add TicTacToe.ipynb')
+# %cd /content/SelfPlayAI
+
+# # Remove AlphaZeroImplementation.ipynb from Git
+# !git rm --cached AlphaZeroImplementation.ipynb
+
+# # Commit the removal
+# !git commit -m "Remove old AlphaZeroImplementation notebook from repo"
 
 
 # In[ ]:
 
 
-get_ipython().system('git commit -m "Update TicTacToe notebook"')
+# import getpass
+# token = getpass.getpass("Enter GitHub token: ")
+
+# !git push https://GodUnicornIzek:{token}@github.com/GodUnicornizek/SelfPlayAI.git main
 
 
 # In[ ]:
 
 
-get_ipython().system('git commit -m "Update TicTacToe.py: wrap demo code in __main__"')
+# %cd /content/SelfPlayAI
 
 
 # In[ ]:
 
 
-import getpass
-token = getpass.getpass("Enter GitHub token: ")
-
-get_ipython().system('git push https://GodUnicornIzek:{token}@github.com/GodUnicornizek/SelfPlayAI.git main')
+# !cp /content/TicTacToe.ipynb ./TicTacToe.ipynb  # Notebook
+# !jupyter nbconvert --to python TicTacToe.ipynb   # Optional: update .py module
 
 
-# In[ ]:
+# In[14]:
 
 
-import getpass
-token = getpass.getpass("Enter GitHub token: ")
-
-get_ipython().system('git pull https://GodUnicornIzek:{token}@github.com/GodUnicornizek/SelfPlayAI.git main --allow-unrelated-histories')
+# !git add TicTacToe.py TicTacToe.ipynb
 
 
-# In[ ]:
+# In[15]:
 
 
-get_ipython().system('git status')
+# !git add TicTacToe.ipynb
 
 
 # In[ ]:
 
 
-get_ipython().system('git add TicTacToe.ipynb TicTacToe.py')
-get_ipython().system('git commit -m "Update TicTacToe notebook and module"')
-get_ipython().system('git push https://GodUnicornIzek:{token}@github.com/GodUnicornizek/SelfPlayAI.git main')
+# !git commit -m "Update TicTacToe notebook"
+
+
+# In[ ]:
+
+
+# !git commit -m "Update TicTacToe.py: wrap demo code in __main__"
+
+
+# In[ ]:
+
+
+# import getpass
+# token = getpass.getpass("Enter GitHub token: ")
+
+# !git push https://GodUnicornIzek:{token}@github.com/GodUnicornizek/SelfPlayAI.git main
+
+
+# In[ ]:
+
+
+# import getpass
+# token = getpass.getpass("Enter GitHub token: ")
+
+# !git pull https://GodUnicornIzek:{token}@github.com/GodUnicornizek/SelfPlayAI.git main --allow-unrelated-histories
+
+
+# In[ ]:
+
+
+# !git status
+
+
+# In[ ]:
+
+
+# !git add TicTacToe.ipynb TicTacToe.py
+# !git commit -m "Update TicTacToe notebook and module"
+# !git push https://GodUnicornIzek:{token}@github.com/GodUnicornizek/SelfPlayAI.git main
 
 
 # # New Code for pushing to Github
@@ -376,69 +376,49 @@ get_ipython().system('git push https://GodUnicornIzek:{token}@github.com/GodUnic
 # In[ ]:
 
 
-get_ipython().system('git clone https://github.com/Godunicornizek/SelfPlayAI.git')
+#!git clone https://github.com/Godunicornizek/SelfPlayAI.git
 
 
 # In[ ]:
 
 
-get_ipython().system('git config --global user.name "GodunicornIzek"')
-get_ipython().system('git config --global user.email "godunicornizek@gmail.com"')
+# !git config --global user.name "GodunicornIzek"
+# !git config --global user.email "godunicornizek@gmail.com"
 
 
 # Run the following code after a workflow for pushing to Git
 
-# In[1]:
+# In[5]:
 
 
-from google.colab import drive
-drive.mount('/content/drive')
+if __name__ == "__main__":
+    from google.colab import drive
+    drive.mount('/content/drive')
+
+    get_ipython().run_line_magic('cd', '/content/drive/MyDrive')
+    get_ipython().system('mkdir -p Projects')
+    get_ipython().run_line_magic('cd', '/content/drive/MyDrive/Projects')
+
+    get_ipython().system('mv /content/drive/MyDrive/SelfPlayAI/TicTacToe.ipynb      /content/drive/MyDrive/Projects/SelfPlayAI/')
+
+    get_ipython().run_line_magic('cd', '/content/drive/MyDrive/Projects/SelfPlayAI')
+    get_ipython().system('jupyter nbconvert --to python TicTacToe.ipynb')
+
+    get_ipython().system('git status')
+
+    get_ipython().system('git add TicTacToe.ipynb TicTacToe.py')
+
+    get_ipython().system('git commit -m "Update TicTacToe game logic"')
+
+    import getpass
+    token = getpass.getpass("Enter GitHub token: ")
+
+    get_ipython().system('git remote set-url origin https://GodUnicornIzek:{token}@github.com/GodUnicornizek/SelfPlayAI.git')
+
 
 
 # In[13]:
 
 
-get_ipython().run_line_magic('cd', '/content/drive/MyDrive')
-get_ipython().system('mkdir -p Projects')
-get_ipython().run_line_magic('cd', '/content/drive/MyDrive/Projects')
-
-
-# In[14]:
-
-
-get_ipython().system('mv /content/drive/MyDrive/SelfPlayAI/TicTacToe.ipynb     /content/drive/MyDrive/Projects/SelfPlayAI/')
-
-
-# In[20]:
-
-
-get_ipython().run_line_magic('cd', '/content/drive/MyDrive/Projects/SelfPlayAI')
-get_ipython().system('jupyter nbconvert --to python TicTacToe.ipynb')
-
-
-# In[22]:
-
-
-get_ipython().system('git status')
-
-
-# In[23]:
-
-
-get_ipython().system('git add TicTacToe.ipynb TicTacToe.py')
-
-
-# In[25]:
-
-
-get_ipython().system('git commit -m "Update TicTacToe game logic"')
-
-
-# In[28]:
-
-
-import getpass
-token = getpass.getpass("Enter GitHub token: ")
-
-get_ipython().system('git remote set-url origin https://GodUnicornIzek:{token}@github.com/GodUnicornizek/SelfPlayAI.git')
+get_ipython().system('git push origin main')
 
