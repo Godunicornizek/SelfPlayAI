@@ -11,14 +11,14 @@ drive.mount('/content/drive')
 
 # # Creating a TicTacToe Class
 
-# In[ ]:
+# In[1]:
 
 
 import numpy as np
 np.__version__
 
 
-# In[ ]:
+# In[2]:
 
 
 class TicTacToe:
@@ -49,6 +49,9 @@ class TicTacToe:
         return (state.reshape(-1) == 0).astype(np.uint8)
 
     def determine_won(self, state: np.ndarray, action: int) -> bool:
+        if action == None:
+            return False
+
         row = action // self.column_count
         column = action % self.column_count
         player = state[row, column]
@@ -71,10 +74,16 @@ class TicTacToe:
     def get_opponent(self, player):
         return -player
 
+    def get_opponent_value(self, value):
+        return -value
+
+    def change_perspective(self, state, player):
+        return state * player
+
 
 # # Testing TicTacToe
 
-# In[ ]:
+# In[3]:
 
 
 if __name__ == "__main__":
@@ -388,7 +397,7 @@ if __name__ == "__main__":
 
 # Run the following code after a workflow for pushing to Git
 
-# In[5]:
+# In[4]:
 
 
 if __name__ == "__main__":
@@ -415,10 +424,5 @@ if __name__ == "__main__":
 
     get_ipython().system('git remote set-url origin https://GodUnicornIzek:{token}@github.com/GodUnicornizek/SelfPlayAI.git')
 
-
-
-# In[13]:
-
-
-get_ipython().system('git push origin main')
+    get_ipython().system('git push origin main')
 
