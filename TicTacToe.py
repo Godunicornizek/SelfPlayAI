@@ -11,14 +11,14 @@ drive.mount('/content/drive')
 
 # # Creating a TicTacToe Class
 
-# In[1]:
+# In[3]:
 
 
 import numpy as np
 np.__version__
 
 
-# In[2]:
+# In[6]:
 
 
 class TicTacToe:
@@ -57,7 +57,7 @@ class TicTacToe:
         player = state[row, column]
 
         return (
-             np.sum(state[row, :] == player * self.column_count)
+             np.sum(state[row, :]) == player * self.column_count
              or np.sum(state[:, column]) == player * self.row_count
              or np.sum(np.diag(state)) == player * self.row_count
              or np.sum(np.diag(np.fliplr(state))) == player * self.row_count
@@ -83,7 +83,7 @@ class TicTacToe:
 
 # # Testing TicTacToe
 
-# In[3]:
+# In[7]:
 
 
 if __name__ == "__main__":
@@ -382,22 +382,22 @@ if __name__ == "__main__":
 
 # The following code does not need to be run again:
 
-# In[ ]:
+# In[8]:
 
 
 #!git clone https://github.com/Godunicornizek/SelfPlayAI.git
 
 
-# In[ ]:
-
-
-# !git config --global user.name "GodunicornIzek"
-# !git config --global user.email "godunicornizek@gmail.com"
-
-
 # Run the following code after a workflow for pushing to Git
 
-# In[4]:
+# In[9]:
+
+
+get_ipython().system('git config --global user.name "GodunicornIzek"')
+get_ipython().system('git config --global user.email "godunicornizek@gmail.com"')
+
+
+# In[ ]:
 
 
 if __name__ == "__main__":
