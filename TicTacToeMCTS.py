@@ -66,15 +66,15 @@ get_ipython().system('git remote set-url origin https://GodunicornIzek:{token}@g
 # In[ ]:
 
 
-import numpy as np
-import math
-import random
+# import numpy as np
+# import math
+# import random
 
 
 # In[ ]:
 
 
-from TicTacToe import TicTacToe
+#from TicTacToe import TicTacToe
 
 
 # In[ ]:
@@ -347,7 +347,7 @@ get_ipython().system('git config --global user.name "GodunicornIzek"')
 get_ipython().system('git config --global user.email "godunicornizek@gmail.com"')
 
 
-# In[8]:
+# In[10]:
 
 
 if __name__ == "__main__":
@@ -368,5 +368,11 @@ if __name__ == "__main__":
     get_ipython().system('git add TicTacToeMCTS.ipynb TicTacToeMCTS.py')
 
     get_ipython().system('git commit -m "Create MCTS class and Node class"')
+
+
+
+# In[ ]:
+
+
 
 
