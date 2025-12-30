@@ -3,7 +3,7 @@
 
 # # New Code for importing TicTacToe class
 
-# In[1]:
+# In[ ]:
 
 
 # Download the raw TicTacToe.py from GitHub
@@ -230,50 +230,51 @@ class MCTS:
 
 # # Testing MCTS
 
-# In[ ]:
+# In[5]:
 
 
-tictactoe = TicTacToe()
-player = 1
+if __name__ == "__main__":
+    tictactoe = TicTacToe()
+    player = 1
 
-args = {
-    'C': 1.41,
-    'num_searches': 1000
-}
-mcts = MCTS(tictactoe, args)
+    args = {
+        'C': 1.41,
+        'num_searches': 1000
+    }
+    mcts = MCTS(tictactoe, args)
 
-state = tictactoe.get_init()
+    state = tictactoe.get_init()
 
-while True:
-    print(state)
-
-    if player == 1:
-        valid_moves = tictactoe.get_valid_moves(state)
-        print("valid moves", [i for i in range(tictactoe.action_size) if valid_moves[i] == 1])
-        action = int(input(f"{player}:"))
-
-        if valid_moves[action] == 0:
-            print("action not valid")
-            continue
-    else:
-        neutral_state = tictactoe.change_perspective(state, player)
-        mcts_probs = mcts.search(neutral_state)
-        action = np.argmax(mcts_probs)
-
-
-    state = tictactoe.get_next_state(state, action, player)
-
-    value, is_terminal = tictactoe.get_value_and_terminated(state, action)
-
-    if is_terminal:
+    while True:
         print(state)
-        if value == 1:
-            print(player, "won")
-        else:
-            print("draw")
-        break
 
-    player = tictactoe.get_opponent(player)
+        if player == 1:
+            valid_moves = tictactoe.get_valid_moves(state)
+            print("valid moves", [i for i in range(tictactoe.action_size) if valid_moves[i] == 1])
+            action = int(input(f"{player}:"))
+
+            if valid_moves[action] == 0:
+                print("action not valid")
+                continue
+        else:
+            neutral_state = tictactoe.change_perspective(state, player)
+            mcts_probs = mcts.search(neutral_state)
+            action = np.argmax(mcts_probs)
+
+
+        state = tictactoe.get_next_state(state, action, player)
+
+        value, is_terminal = tictactoe.get_value_and_terminated(state, action)
+
+        if is_terminal:
+            print(state)
+            if value == 1:
+                print(player, "won")
+            else:
+                print("draw")
+            break
+
+        player = tictactoe.get_opponent(player)
 
 
 # # Code for pushing to Github
@@ -331,7 +332,7 @@ if __name__ == "__main__":
 
 # The following code does not need to be run again:
 
-# In[2]:
+# In[ ]:
 
 
 get_ipython().system('git clone https://github.com/Godunicornizek/SelfPlayAI.git')
@@ -339,14 +340,14 @@ get_ipython().system('git clone https://github.com/Godunicornizek/SelfPlayAI.git
 
 # Run the following code after a workflow for pushing to Git
 
-# In[3]:
+# In[6]:
 
 
 get_ipython().system('git config --global user.name "GodunicornIzek"')
 get_ipython().system('git config --global user.email "godunicornizek@gmail.com"')
 
 
-# In[4]:
+# In[7]:
 
 
 if __name__ == "__main__":
@@ -367,17 +368,5 @@ if __name__ == "__main__":
     get_ipython().system('git add TicTacToeMCTS.ipynb TicTacToeMCTS.py')
 
     get_ipython().system('git commit -m "Create MCTS class and Node class"')
-
-    import getpass
-    token = getpass.getpass("Enter GitHub token: ")
-
-    get_ipython().system('git remote set-url origin https://GodUnicornIzek:{token}@github.com/GodUnicornizek/SelfPlayAI.git')
-
-    get_ipython().system('git push origin main')
-
-
-# In[ ]:
-
-
 
 
