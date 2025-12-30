@@ -16,9 +16,6 @@ importlib.reload(TicTacToe)
 
 from TicTacToe import TicTacToe
 
-tictactoe = TicTacToe()
-neutral_state = tictactoe.change_perspective(state, player)
-
 
 # # Old code for cloning into Git
 
@@ -342,32 +339,14 @@ get_ipython().system('git clone https://github.com/Godunicornizek/SelfPlayAI.git
 
 # Run the following code after a workflow for pushing to Git
 
-# In[2]:
+# In[9]:
 
 
 get_ipython().system('git config --global user.name "GodunicornIzek"')
 get_ipython().system('git config --global user.email "godunicornizek@gmail.com"')
 
 
-# In[6]:
-
-
-get_ipython().run_line_magic('cd', '/content/drive/MyDrive/Projects/SelfPlayAI')
-
-
-# In[8]:
-
-
-get_ipython().system('mv /content/drive/MyDrive/SelfPlayAI/TicTacToeMCTS.ipynb ./')
-
-
-# In[7]:
-
-
-get_ipython().system('git add TicTacToeMCTS.ipynb')
-
-
-# In[3]:
+# In[10]:
 
 
 if __name__ == "__main__":
