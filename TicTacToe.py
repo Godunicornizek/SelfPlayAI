@@ -1,7 +1,7 @@
 #!/usr/bin/env python
 # coding: utf-8
 
-# In[ ]:
+# In[12]:
 
 
 # Mount GDrive
@@ -18,7 +18,7 @@ import numpy as np
 np.__version__
 
 
-# In[6]:
+# In[1]:
 
 
 class TicTacToe:
@@ -79,6 +79,13 @@ class TicTacToe:
 
     def change_perspective(self, state, player):
         return state * player
+
+    def get_encoded_state(self, state):
+        encoded_state = np.stack(
+            (state == -1, state == 0, state == 1)
+        ).astype(np.float32)
+
+        return encoded_state
 
 
 # # Testing TicTacToe
