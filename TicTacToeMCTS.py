@@ -80,13 +80,13 @@ from TicTacToe import TicTacToe
 # In[ ]:
 
 
-tictactoe = TicTacToe()
+#tictactoe = TicTacToe()
 
 
 # In[ ]:
 
 
-print(tictactoe.get_init())
+#print(tictactoe.get_init())
 
 
 # In[ ]:
@@ -230,7 +230,7 @@ class MCTS:
 
 # # Testing MCTS
 
-# In[5]:
+# In[9]:
 
 
 if __name__ == "__main__":
@@ -347,7 +347,7 @@ get_ipython().system('git config --global user.name "GodunicornIzek"')
 get_ipython().system('git config --global user.email "godunicornizek@gmail.com"')
 
 
-# In[7]:
+# In[8]:
 
 
 if __name__ == "__main__":
