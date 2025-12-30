@@ -3,7 +3,7 @@
 
 # # New Code for importing TicTacToe class
 
-# In[ ]:
+# In[1]:
 
 
 # Download the raw TicTacToe.py from GitHub
@@ -331,7 +331,7 @@ if __name__ == "__main__":
 
 # The following code does not need to be run again:
 
-# In[1]:
+# In[2]:
 
 
 get_ipython().system('git clone https://github.com/Godunicornizek/SelfPlayAI.git')
@@ -339,14 +339,14 @@ get_ipython().system('git clone https://github.com/Godunicornizek/SelfPlayAI.git
 
 # Run the following code after a workflow for pushing to Git
 
-# In[9]:
+# In[3]:
 
 
 get_ipython().system('git config --global user.name "GodunicornIzek"')
 get_ipython().system('git config --global user.email "godunicornizek@gmail.com"')
 
 
-# In[10]:
+# In[4]:
 
 
 if __name__ == "__main__":
