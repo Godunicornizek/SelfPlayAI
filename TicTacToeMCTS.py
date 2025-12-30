@@ -3,7 +3,7 @@
 
 # # New Code for importing TicTacToe class
 
-# In[ ]:
+# In[16]:
 
 
 # Download the raw TicTacToe.py from GitHub
@@ -25,7 +25,7 @@ from TicTacToe import TicTacToe
 get_ipython().system('git clone https://github.com/Godunicornizek/SelfPlayAI.git')
 
 
-# In[ ]:
+# In[15]:
 
 
 get_ipython().system('git pull origin main')
@@ -89,7 +89,7 @@ get_ipython().system('git remote set-url origin https://GodunicornIzek:{token}@g
 #print(tictactoe.get_init())
 
 
-# In[ ]:
+# In[17]:
 
 
 class Node:
@@ -185,7 +185,7 @@ class Node:
 
 
 
-# In[ ]:
+# In[18]:
 
 
 class MCTS:
@@ -332,7 +332,7 @@ if __name__ == "__main__":
 
 # The following code does not need to be run again:
 
-# In[ ]:
+# In[11]:
 
 
 get_ipython().system('git clone https://github.com/Godunicornizek/SelfPlayAI.git')
@@ -340,14 +340,14 @@ get_ipython().system('git clone https://github.com/Godunicornizek/SelfPlayAI.git
 
 # Run the following code after a workflow for pushing to Git
 
-# In[6]:
+# In[12]:
 
 
 get_ipython().system('git config --global user.name "GodunicornIzek"')
 get_ipython().system('git config --global user.email "godunicornizek@gmail.com"')
 
 
-# In[10]:
+# In[13]:
 
 
 if __name__ == "__main__":
@@ -368,6 +368,8 @@ if __name__ == "__main__":
     get_ipython().system('git add TicTacToeMCTS.ipynb TicTacToeMCTS.py')
 
     get_ipython().system('git commit -m "Create MCTS class and Node class"')
+
+    get_ipython().system('git push')
 
 
 
