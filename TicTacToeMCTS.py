@@ -93,15 +93,15 @@ get_ipython().system('git remote set-url origin https://GodunicornIzek:{token}@g
 
 
 class Node:
-    def __init__(self, game, args, state, parent=None, action_taken=None):
+    def __init__(self, game, args, state, parent=None, action_taken=None, prior=0):
         self.game = game
         self.args = args
         self.state = state
         self.parent = parent
         self.action_taken = action_taken
+        self.prior = prior
 
         self.children = []
-        self.expandable_moves = game.get_valid_moves(state)
 
         self.visit_count = 0
         self.value_sum = 0
@@ -139,41 +139,44 @@ class Node:
         # u_value = self.args['C'] * math.sqrt(math.log(max(1, self.visit_count)) / max(eps, child.visit_count))
 
         # return q_value + u_value
+        if child.visit_count == 0:
+            q_value = 0
         q_value = 1 - ((child.value_sum / child.visit_count) + 1) / 2
-        return q_value + self.args['C'] * math.sqrt(math.log(self.visit_count) / child.visit_count)
+        return q_value + self.args['C'] * child.prior * (math.sqrt(self.visit_count) / (1 + child.visit_count))
 
-    def expand(self):
-        action = np.random.choice(np.where(self.expandable_moves == 1)[0])
-        self.expandable_moves[action] = 0
+    def expand(self, policy):
+        # action = np.random.choice(np.where(self.expandable_moves == 1)[0])
+        # self.expandable_moves[action] = 0
+        for action, prob in enumerate(policy):
+            if prob > 0:
+                child_state = self.state.copy()
+                child_state = self.game.get_next_state(child_state, action, 1)
+                child_state = self.game.change_perspective(child_state, player = -1)
 
-        child_state = self.state.copy()
-        child_state = self.game.get_next_state(child_state, action, 1)
-        child_state = self.game.change_perspective(child_state, player = -1)
+                child = Node(self.game, self.args, child_state, self, action, prob) # Stores P(s,a) in each child
+                self.children.append(child)
+                return child
 
-        child = Node(self.game, self.args, child_state, self, action)
-        self.children.append(child)
-        return child
+    # def simulate(self):
+    #     value, is_terminal = self.game.get_value_and_terminated(self.state, self.action_taken)
+    #     value = self.game.get_opponent_value(value)
 
-    def simulate(self):
-        value, is_terminal = self.game.get_value_and_terminated(self.state, self.action_taken)
-        value = self.game.get_opponent_value(value)
+    #     if is_terminal:
+    #         return value
 
-        if is_terminal:
-            return value
+    #     rollout_state = self.state.copy()
+    #     rollout_player = 1
+    #     while True:
+    #         valid_moves = self.game.get_valid_moves(rollout_state)
+    #         action = np.random.choice(np.where(valid_moves == 1)[0])
+    #         rollout_state = self.game.get_next_state(rollout_state, action, rollout_player)
+    #         value, is_terminal = self.game.get_value_and_terminated(rollout_state, action)
+    #         if is_terminal:
+    #             if rollout_player == -1:
+    #                 value = self.game.get_opponent_value(value)
+    #             return value
 
-        rollout_state = self.state.copy()
-        rollout_player = 1
-        while True:
-            valid_moves = self.game.get_valid_moves(rollout_state)
-            action = np.random.choice(np.where(valid_moves == 1)[0])
-            rollout_state = self.game.get_next_state(rollout_state, action, rollout_player)
-            value, is_terminal = self.game.get_value_and_terminated(rollout_state, action)
-            if is_terminal:
-                if rollout_player == -1:
-                    value = self.game.get_opponent_value(value)
-                return value
-
-            rollout_player = self.game.get_opponent(rollout_player)
+    #         rollout_player = self.game.get_opponent(rollout_player)
 
     def backpropagate(self, value):
         self.value_sum += value
@@ -189,10 +192,12 @@ class Node:
 
 
 class MCTS:
-    def __init__(self, game, args: dict):
+    def __init__(self, game, args: dict, model):
         self.game = game
         self.args = args
+        self.model = model
 
+    @torch.no_grad()
     def search(self, state):
         root = Node(self.game, self.args, state)
 
@@ -215,8 +220,17 @@ class MCTS:
 
             # Check terminal node.
             if not is_terminal:
-                node = node.expand()
-                value = node.simulate()
+                policy, value = self.model(
+                    torch.tensor(self.game.get_encoded_state(node.state)).unsqueeze(0)
+                )
+                policy = torch.softmax(policy, axis=1).squeeze(0).cpu().numpy()
+                valid_moves = self.game.get_valid_moves(node.state)
+                policy *= valid_moves
+                policy /= np.sum(policy)
+
+                value = value.item()
+
+                node = node.expand(policy)
 
             node.backpropagate(value)
 
@@ -347,7 +361,7 @@ get_ipython().system('git config --global user.name "GodunicornIzek"')
 get_ipython().system('git config --global user.email "godunicornizek@gmail.com"')
 
 
-# In[13]:
+# In[ ]:
 
 
 if __name__ == "__main__":
@@ -369,7 +383,12 @@ if __name__ == "__main__":
 
     get_ipython().system('git commit -m "Create MCTS class and Node class"')
 
-    get_ipython().system('git push')
+    import getpass
+    token = getpass.getpass("Enter GitHub token: ")
+
+    get_ipython().system('git remote set-url origin https://GodUnicornIzek:{token}@github.com/GodUnicornizek/SelfPlayAI.git')
+
+    get_ipython().system('git push origin main')
 
 
 
