@@ -3,7 +3,7 @@
 
 # # New Code for importing TicTacToe class
 
-# In[16]:
+# In[ ]:
 
 
 # Download the raw TicTacToe.py from GitHub
@@ -25,7 +25,7 @@ from TicTacToe import TicTacToe
 get_ipython().system('git clone https://github.com/Godunicornizek/SelfPlayAI.git')
 
 
-# In[15]:
+# In[ ]:
 
 
 get_ipython().system('git pull origin main')
@@ -89,8 +89,10 @@ get_ipython().system('git remote set-url origin https://GodunicornIzek:{token}@g
 #print(tictactoe.get_init())
 
 
-# In[17]:
+# In[ ]:
 
+
+import numpy as np
 
 class Node:
     def __init__(self, game, args, state, parent=None, action_taken=None, prior=0):
@@ -187,7 +189,7 @@ class Node:
 
 
 
-# In[18]:
+# In[ ]:
 
 
 import torch
@@ -245,7 +247,7 @@ class MCTS:
 
 # # Testing MCTS
 
-# In[9]:
+# In[ ]:
 
 
 if __name__ == "__main__":
@@ -347,7 +349,7 @@ if __name__ == "__main__":
 
 # The following code does not need to be run again:
 
-# In[11]:
+# In[ ]:
 
 
 get_ipython().system('git clone https://github.com/Godunicornizek/SelfPlayAI.git')
@@ -355,7 +357,7 @@ get_ipython().system('git clone https://github.com/Godunicornizek/SelfPlayAI.git
 
 # Run the following code after a workflow for pushing to Git
 
-# In[2]:
+# In[1]:
 
 
 get_ipython().system('git config --global user.name "GodunicornIzek"')
