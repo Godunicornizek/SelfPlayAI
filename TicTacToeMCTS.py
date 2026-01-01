@@ -66,9 +66,10 @@ get_ipython().system('git remote set-url origin https://GodunicornIzek:{token}@g
 # In[ ]:
 
 
-# import numpy as np
-# import math
-# import random
+import numpy as np
+import math
+import random
+import torch
 
 
 # In[ ]:
@@ -91,8 +92,6 @@ get_ipython().system('git remote set-url origin https://GodunicornIzek:{token}@g
 
 # In[ ]:
 
-
-import numpy as np
 
 class Node:
     def __init__(self, game, args, state, parent=None, action_taken=None, prior=0):
@@ -191,8 +190,6 @@ class Node:
 
 # In[ ]:
 
-
-import torch
 
 class MCTS:
     def __init__(self, game, args: dict, model):
@@ -298,7 +295,7 @@ if __name__ == "__main__":
 
 # The following code does not need to be run again:
 
-# In[ ]:
+# In[3]:
 
 
 #!git clone https://github.com/Godunicornizek/SelfPlayAI.git
@@ -306,7 +303,7 @@ if __name__ == "__main__":
 
 # Run the following code after a workflow for pushing to Git
 
-# In[ ]:
+# In[4]:
 
 
 get_ipython().system('git config --global user.name "GodunicornIzek"')
@@ -364,7 +361,7 @@ get_ipython().system('git config --global user.name "GodunicornIzek"')
 get_ipython().system('git config --global user.email "godunicornizek@gmail.com"')
 
 
-# In[ ]:
+# In[2]:
 
 
 if __name__ == "__main__":
