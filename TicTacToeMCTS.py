@@ -100,7 +100,6 @@ class Node:
         self.parent = parent
         self.action_taken = action_taken
         self.prior = prior
-
         self.children = []
 
         self.visit_count = 0
@@ -190,6 +189,8 @@ class Node:
 
 # In[18]:
 
+
+import torch
 
 class MCTS:
     def __init__(self, game, args: dict, model):
@@ -354,7 +355,7 @@ get_ipython().system('git clone https://github.com/Godunicornizek/SelfPlayAI.git
 
 # Run the following code after a workflow for pushing to Git
 
-# In[12]:
+# In[2]:
 
 
 get_ipython().system('git config --global user.name "GodunicornIzek"')
