@@ -108,7 +108,7 @@ class Node:
 
     def is_fully_expanded(self):
         """Check whether node has expanded all actions, and return whether it is a terminal node or not"""
-        return np.sum(self.expandable_moves) == 0 and len(self.children) > 0
+        return len(self.children) > 0
 
     def select(self):
         """Select a child node using the PUCT formula"""
@@ -310,7 +310,7 @@ get_ipython().system('git config --global user.name "GodunicornIzek"')
 get_ipython().system('git config --global user.email "godunicornizek@gmail.com"')
 
 
-# In[ ]:
+# In[6]:
 
 
 if __name__ == "__main__":
@@ -346,7 +346,7 @@ if __name__ == "__main__":
 
 # The following code does not need to be run again:
 
-# In[ ]:
+# In[7]:
 
 
 get_ipython().system('git clone https://github.com/Godunicornizek/SelfPlayAI.git')
@@ -354,14 +354,14 @@ get_ipython().system('git clone https://github.com/Godunicornizek/SelfPlayAI.git
 
 # Run the following code after a workflow for pushing to Git
 
-# In[1]:
+# In[8]:
 
 
 get_ipython().system('git config --global user.name "GodunicornIzek"')
 get_ipython().system('git config --global user.email "godunicornizek@gmail.com"')
 
 
-# In[2]:
+# In[9]:
 
 
 if __name__ == "__main__":
